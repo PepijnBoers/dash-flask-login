@@ -4,6 +4,7 @@ _local
 updateReqs
 *.html
 env
+venv
 testbench
 bkpMySQL
 run_gunicorn
@@ -49,3 +50,4 @@ push_to_server
 .Trashes
 ehthumbs.db
 Thumbs.db
+.env

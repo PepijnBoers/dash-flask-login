@@ -1,7 +1,11 @@
 import configparser
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
-config = configparser.ConfigParser()
-config.read('config.txt')
+load_dotenv()
 
-engine = create_engine(config.get('database', 'con'))
+engine = create_engine(
+    os.getenv("DATABASE_URL"),
+)

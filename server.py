@@ -2,9 +2,9 @@
 import dash
 # User management initialization
 import os
+import dash_bootstrap_components as dbc
 from flask_login import LoginManager, UserMixin
 from users_mgt import db, User as base
-from config import config
 
 
 app = dash.Dash(
@@ -17,7 +17,8 @@ app = dash.Dash(
             'name': 'viewport',
             'content': 'width=device-width, initial-scale=1, shrink-to-fit=no'
         }
-    ]
+    ],
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 server = app.server
 app.config.suppress_callback_exceptions = True
@@ -28,7 +29,7 @@ app.scripts.config.serve_locally = True
 # config
 server.config.update(
     SECRET_KEY=os.urandom(12),
-    SQLALCHEMY_DATABASE_URI=config.get('database', 'con'),
+    SQLALCHEMY_DATABASE_URI=os.getenv('DATABASE_URL'),
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 )
 
