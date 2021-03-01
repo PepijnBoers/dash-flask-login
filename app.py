@@ -48,7 +48,7 @@ def display_page(pathname):
         return login.layout
     elif pathname == '/success':
         if current_user.is_authenticated:
-            return success.layout
+            return success.layoutje()
         else:
             return login_fd.layout
     elif pathname == '/logout':
